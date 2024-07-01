@@ -6,7 +6,7 @@
     background-color: #f0f4f9;
     padding: 25px 15px;
     transition: width 0.3s ease-in-out;
-    width: 60px; /* Adjust initial width */
+    width: 80px; /* Adjust initial width */
     overflow: hidden;
 }
 
