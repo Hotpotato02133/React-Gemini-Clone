@@ -1,16 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Light theme colors (default) */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9fafb;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+}
+
+/* Dark theme colors */
+[data-theme="dark"] {
+    --bg-primary: #111827;
+    --bg-secondary: #1f2937;
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+}
+
 *{
     padding:0;
     margin:0;
     box-sizing: border-box;
-    font-family:outfit;
+    font-family: "Outfit", "Inter", sans-serif;
 }
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 #root{
     min-height: 100vh;
     display:flex;
     animation: fadeIn 1.0s;
 }
+
 @keyframes fadeIn{
     0%{
         opacity: 0;

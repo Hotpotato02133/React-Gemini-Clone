@@ -1,13 +1,17 @@
 .sidebar {
-    min-height: 100vh;
+    height: 100vh;
+    position: sticky;
+    top: 0;
     display: inline-flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #f0f4f9;
+    background-color: var(--sidebar-bg, #f0f4f9);
     padding: 25px 15px;
-    transition: width 0.3s ease-in-out;
-    width: 80px; /* Adjust initial width */
+    transition: width 0.3s ease-in-out, background-color 0.3s ease;
+    width: 80px;
     overflow: hidden;
+    border-right: 1px solid var(--border-color, #e5e7eb);
+    z-index: 1000;
 }
 
 .sidebar.extended {
@@ -30,12 +34,12 @@
     align-items: center;
     gap: 10px;
     padding: 10px 15px;
-    background-color: #e6eaf1;
+    background-color: var(--new-chat-bg, #e6eaf1);
     border-radius: 50px;
     font-size: 14px;
-    color: gray;
+    color: var(--text-secondary, gray);
     cursor: pointer;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out, background-color 0.3s ease;
 }
 
 .sidebar .recent {
@@ -56,13 +60,27 @@
     padding: 10px;
     padding-right: 40px;
     border-radius: 50px;
-    color: #282828;
+    color: var(--text-primary, #282828);
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
 }
 
 .sidebar .recent-entry:hover {
-    background-color: #e2e2e2;
+    background-color: var(--hover-bg, #e2e2e2);
+}
+
+/* Dark Theme for Sidebar */
+[data-theme="dark"] .sidebar {
+    --sidebar-bg: #1f2937;
+    --new-chat-bg: #374151;
+    --hover-bg: #374151;
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+    --border-color: #374151;
+}
+
+[data-theme="dark"] .sidebar .recent-title {
+    color: #d1d5db;
 }
 
 .sidebar .bottom {
@@ -74,6 +92,75 @@
     padding-right: 10px;
     cursor: pointer;
     transition: opacity 0.3s ease-in-out;
+}
+
+/* Saved session with delete button */
+.sidebar .saved-session {
+    position: relative;
+    padding-right: 35px;
+}
+
+.sidebar .saved-session:hover .delete-session-btn {
+    opacity: 1;
+}
+
+.delete-session-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-secondary, #666);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.delete-session-btn:hover {
+    background: #ef4444;
+    color: white;
+}
+
+.no-sessions {
+    font-size: 13px;
+    color: var(--text-secondary, #666);
+    padding: 10px;
+    text-align: center;
+}
+
+.sign-in-prompt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sign-in-prompt:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+}
+
+.sign-in-prompt span {
+    font-size: 16px;
+}
+
+.sign-in-prompt p {
+    font-size: 13px;
+    color: var(--text-primary, #333);
+    margin: 0;
 }
 
 @media (max-width: 600px) {
